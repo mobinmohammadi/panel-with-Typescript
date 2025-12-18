@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+// src/components/InventoryBox.tsx
+import { Boxes, AlertTriangle } from 'lucide-react';
+export default function InventoryBox({ total, lowStock }) {
+    return (_jsxs("div", { className: "bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg flex items-center justify-between transition-all", children: [_jsxs("div", { children: [_jsx("h2", { className: "text-xl font-bold text-gray-800 dark:text-white mb-2", children: "\u0645\u0648\u062C\u0648\u062F\u06CC \u0645\u062D\u0635\u0648\u0644\u0627\u062A" }), _jsxs("p", { className: "text-sm text-gray-600 dark:text-gray-300", children: ["\u062A\u0639\u062F\u0627\u062F \u06A9\u0644: ", _jsx("span", { className: "font-semibold", children: total })] }), _jsxs("p", { className: "text-sm text-yellow-600 dark:text-yellow-400 mt-1", children: ["\u06A9\u0645\u200C\u0628\u0648\u062F: ", _jsx("span", { className: "font-semibold", children: lowStock })] })] }), _jsxs("div", { className: "relative", children: [_jsx(Boxes, { className: "w-12 h-12 text-indigo-600 dark:text-indigo-400" }), lowStock > 0 && (_jsx("div", { className: "absolute -top-2 -right-2 bg-yellow-500 text-white p-1 rounded-full", children: _jsx(AlertTriangle, { className: "w-4 h-4" }) }))] })] }));
+}

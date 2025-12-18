@@ -8,6 +8,7 @@ import Offers from "./assets/Pages/Offers/Offers"
 import Gozareshat from "./assets/Pages/Gozareshat/Gozareshat";
 import Ticket from "./assets/Pages/Ticket/Ticket";
 import { useEffect, useState } from "react";
+import Signin from "./Feature/Signin/Signin";
 
 
 const RouterApp = () => {
@@ -26,9 +27,11 @@ const RouterApp = () => {
           <Route path="/offers" element={<Offers />}></Route>
           <Route path="/users" element={<Users />}></Route>
           <Route path="/gozareshat" element={<Gozareshat />}/>
-          <Route path="/tikets" element={<Ticket />}/>
+          {/* <Route path="/tikets" element={<Ticket />}/> */}
           <Route path="/inventoryBox" element={<AdminDashboard/>}></Route>
         </Route>
+          <Route path="/sign-in" element={<Signin/>}></Route>
+
       </Routes>
     </BrowserRouter>
   );
