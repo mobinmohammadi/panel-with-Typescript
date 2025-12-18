@@ -79,3 +79,5 @@ td {
   display: flex;
   align-items: center;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
