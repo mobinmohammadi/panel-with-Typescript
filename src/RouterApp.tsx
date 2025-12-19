@@ -8,7 +8,8 @@ import Offers from "./assets/Pages/Offers/Offers"
 import Gozareshat from "./assets/Pages/Gozareshat/Gozareshat";
 import Ticket from "./assets/Pages/Ticket/Ticket";
 import { useEffect, useState } from "react";
-import Signin from "./Feature/Signin/Signin";
+import Signin from "./Feature/Signin/Components/Signin";
+import { useSelector } from "react-redux";
 
 
 const RouterApp = () => {
@@ -19,18 +20,25 @@ const RouterApp = () => {
     console.log(isShowLayer);
     
   },[isShowLayer])
+  const user = useSelector((state : any) => state.user)
+  useEffect(() => {
+    console.log(user)
+  }, [user])
+  
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<DashboardLayout isShowLayer={isShowLayer} setIsShowLayer={setIsShowLayer} />}>
-          <Route index element={<Home />}></Route>
+          <Route  index element={<Home user={user} />}></Route>
           <Route path="/offers" element={<Offers />}></Route>
           <Route path="/users" element={<Users />}></Route>
           <Route path="/gozareshat" element={<Gozareshat />}/>
           {/* <Route path="/tikets" element={<Ticket />}/> */}
           <Route path="/inventoryBox" element={<AdminDashboard/>}></Route>
         </Route>
-          <Route path="/sign-in" element={<Signin/>}></Route>
+          <Route index path="/sign-in" element={<Signin/>}></Route>
+
 
       </Routes>
     </BrowserRouter>
