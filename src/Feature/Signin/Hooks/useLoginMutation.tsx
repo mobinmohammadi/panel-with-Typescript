@@ -14,6 +14,8 @@ export default function useLoginMutation() {
     mutationFn: (data: ILoginData) => AuthApi.login(data),
     onSuccess: async (data) => {
       const userInfos = await AuthApi.getMe();
+      console.log(userInfos);
+      
       dispatch(
         setUser({
           id: userInfos.id,

@@ -11,10 +11,21 @@ import { useEffect, useState } from "react";
 import Signin from "./Feature/Signin/Components/Signin";
 import { useSelector } from "react-redux";
 import { ProtectedRoute } from "./assets/Pages/ProtectedRoute/ProtectedRoute";
+import { GetMeQuery } from "./Hooks/GetMeQuery";
+import { log } from "console";
+import useAuthenticate from "./Hooks/useAuthenticate";
+import {CategorisPage} from "./assets/Pages/Categoris/CategorisPage";
 
+const AuthWrapper = () => {
+  useAuthenticate();
+  return null
+}
 
 const RouterApp = () => {
+    
 
+    
+  
   const [isShowLayer , setIsShowLayer] = useState<boolean>(false)
 
   useEffect(() => {
@@ -30,9 +41,9 @@ const RouterApp = () => {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route path="/" element={
-            <ProtectedRoute user={user} redirectPath="/sign-in">
+          <ProtectedRoute user={user} redirectPath="/sign-in">
+              <AuthWrapper/>
                <DashboardLayout isShowLayer={isShowLayer} setIsShowLayer={setIsShowLayer} />
             </ProtectedRoute>
          }>
@@ -41,7 +52,8 @@ const RouterApp = () => {
           <Route path="/users" element={<Users />}></Route>
           <Route path="/gozareshat" element={<Gozareshat />}/>
           {/* <Route path="/tikets" element={<Ticket />}/> */}
-          <Route path="/inventoryBox" element={<AdminDashboard/>}></Route>
+          <Route path="/inventoryBox" element={<AdminDashboard/>}/>
+          <Route path="/categoris" element={<CategorisPage/>}/>
         </Route>
           <Route index path="/sign-in" element={<Signin/>}/>
 

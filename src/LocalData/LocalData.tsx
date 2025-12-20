@@ -1,10 +1,11 @@
 const liMenu = [
    { id : 1 , title : "پیشخوان" , link : "/"},
-   { id : 1 , title : "کاربران" ,link : "users"},
-   { id : 2 , title : "گزارشات" , link : "/gozareshat"},
-   { id : 3 , title : "کد های تخفیف" , link : "/offers"},
-   { id : 4 , title : "تیکت ها" , link : "/tikets"},
-   { id : 5 , title : "محصولات ما" , link : "InventoryBox"},
+   { id : 2 , title : "کاربران" ,link : "users"},
+   { id : 3 , title : "دسته بندی ها" ,link : "categoris"},
+   { id : 4 , title : "گزارشات" , link : "/gozareshat"},
+   { id : 5 , title : "کد های تخفیف" , link : "/offers"},
+   { id : 6 , title : "تیکت ها" , link : "/tikets"},
+   { id : 7 , title : "محصولات ما" , link : "InventoryBox"},
     
 ]
 

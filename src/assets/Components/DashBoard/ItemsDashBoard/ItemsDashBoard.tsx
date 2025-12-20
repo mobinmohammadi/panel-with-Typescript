@@ -1,11 +1,9 @@
 import React from "react";
 type Props = {
-  id: number;
   title: string;
   count: number;
-  percent: number;
 };
-export default function ItemsDashBoard({ id, title, count, percent }: Props) {
+export default function ItemsDashBoard({  title, count }: Props) {
   return (
     <div className="bg-slate-300  relative overflow-hidden dark:bg-[#212d45]  font-Dana-Demi-bold min-h-32 rounded-md flex flex-col p-5 text-right justify-between items ">
       <span className="absolute bg-[#f9c90d] w-15 h-15 -left-5 rounded-full -top-5"></span>
@@ -19,7 +17,7 @@ export default function ItemsDashBoard({ id, title, count, percent }: Props) {
         </span>
       </div>
       <div className=" text-xs flex gap-1 ">
-        <span className="dark:text-primary-dark text-gray-600">{percent}</span>
+        <span className="dark:text-primary-dark text-gray-600">20</span>
         <span className="text-zinc-900 dark:text-white">درصد رشد بیشتر</span>
       </div>
     </div>

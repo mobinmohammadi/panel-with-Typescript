@@ -3,6 +3,7 @@ import TitleForBoxesSections from "../../TitleForBoxesSections/TitleForBoxesSect
 import BoxItemsLastOperation from "./BoxItemsLastOperation/BoxItemsLastOperation";
 
 export default function WrapperLastOperation() {
+  
   return (
     <div>
       <TitleForBoxesSections title="آخرین تراکنش های سایت" />

@@ -81,3 +81,15 @@ td {
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+.custom-input {
+  font-size: 0.75rem;     
+  outline: 0;               
+  background-color: #94a3b8; 
+  color: #27272a;           
+  padding-top: 0.5rem;      
+  padding-bottom: 0.5rem;   
+  padding-right: 0.5rem;    
+  border-radius: 0.125rem;  
+}
+

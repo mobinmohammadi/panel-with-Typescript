@@ -11,8 +11,15 @@ interface ILoginData {
 }
 
 interface IUserRedux {
-  user : IUserData[]
-  isAuthentication : boolean
+  user: IUserData[];
+  isAuthentication: boolean;
+}
+
+interface ICategoryRespone {
+  icon: string;
+  id: number;
+  name: string;
+  status: boolean;
 }
 
 interface IUserData {
@@ -21,5 +28,12 @@ interface IUserData {
   lastname: string;
   role: string;
   email: string;
-  avatar : string
+  avatar: string;
+}
+
+interface IDashboardRespone {
+  productsCount: number;
+  usersCount: number;
+  totalRevenue: number;
+  totalRevenueByProducts: number;
 }
