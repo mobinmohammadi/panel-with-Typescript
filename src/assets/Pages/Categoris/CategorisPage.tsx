@@ -4,6 +4,8 @@ import { useCategoryQuery } from "./Hooks/useCategoryQuery";
 import { useCreateCategoryMutation } from "./Hooks/useCreateCategoryMutation";
 import CategoryIcons from "@/assets/coantants/CategoryIcons";
 import { FormControl, MenuItem, Select } from "@mui/material";
+import { useState } from "react";
+import LoaderCustomConfirm from "@/utils/loaderCustomConfirm";
 
 type FormValues = {
   category: {
@@ -15,9 +17,12 @@ type FormValues = {
 export function CategorisPage() {
   const { data, isPending } = useCategoryQuery();
   const createCategory = useCreateCategoryMutation();
-  const category = data?.data;
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [selectedCategory, setSelectedCategory] = useState<
+    ICategoryRespone | undefined
+  >(undefined);
 
-  const { control, register, handleSubmit, setValue } = useForm<FormValues>({
+  const { control, register, handleSubmit, reset } = useForm<FormValues>({
     defaultValues: {
       category: [{ name: "", icon: "" }],
     },
@@ -29,7 +34,12 @@ export function CategorisPage() {
 
   const onSubmit = (data: any) => {
     const newCategory = data.category[0];
-    createCategory.mutate(newCategory);
+    setIsLoading(true);
+    setTimeout(() => {
+      createCategory.mutate(newCategory);
+      setIsLoading(false);
+    }, 1500);
+    reset();
     console.log(newCategory);
   };
   {
@@ -114,19 +124,25 @@ export function CategorisPage() {
                   </div>
                 </div>
                 <div className="w-full flex justify-end text-white  text-xs ">
-                  <button
-                    type="submit"
-                    className="bg-zinc-800 rounded-md hover:bg-zinc-900 transition-all cursor-pointer pr-4 pl-4 pt-3 pb-3"
-                  >
-                    ثبت دسته بندی جدید
-                  </button>
+                  <div className="bg-zinc-800 rounded-md hover:bg-zinc-900 transition-all cursor-pointer pr-4 pl-4 pt-3 pb-3">
+                    {isLoading ? (
+                      <div className="flex gap-1 items-center">
+                        <span>لطفا صبر کنید....</span>
+                        <span className="loader2"></span>
+                      </div>
+                    ) : (
+                      <button type="submit" className="">
+                        ثبت دسته بندی جدید
+                      </button>
+                    )}
+                  </div>
                 </div>
               </form>
             </div>
           ))}
         </div>
         <div className="">
-          <DataTableCategory />
+          <DataTableCategory setSelectedCategory={setSelectedCategory} />
         </div>
       </div>
     </>
