@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 export default function useLoginMutation() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const loginMutation = useMutation({
     mutationFn: (data: ILoginData) => AuthApi.login(data),
     onSuccess: async (data) => {
@@ -21,10 +22,11 @@ export default function useLoginMutation() {
           role: userInfos.role,
           avatar: userInfos.avatar,
           email: userInfos.email,
+          isAuthentication : true
         })
       );
 
-      if (userInfos.role == "ADMIN") {
+      if (userInfos.role == "USER") {
         navigate("/");
       }
 

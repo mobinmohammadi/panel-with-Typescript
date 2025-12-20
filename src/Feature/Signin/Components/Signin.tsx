@@ -2,12 +2,17 @@ import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { SubmitHandler, useForm } from "react-hook-form";
 import useLoginMutation from "../Hooks/useLoginMutation";
-import { useDispatch } from "react-redux";
-import { userLogin } from "@/redux/Auth/AuthAction";
 
-const inputLabelStyles = {
-  style: {
-    color: "blck",
+
+
+
+
+const sx = {
+  direction: "rtl",
+  "& input": {
+    textAlign: "right",
+  },
+  "& label": {
     right: 0,
     left: "auto",
     transformOrigin: "top right",
@@ -15,31 +20,16 @@ const inputLabelStyles = {
   },
 };
 
-const inputPropsStyles = {
-  style: {
-    textAlign: "right",
-  },
-};
-
-const sxStyles = {
-  direction: "rtl",
-};
-
-
-
 export default function Signin() {
-
-  const loginMutaion = useLoginMutation()
-  const dispatch = useDispatch()
-  // loginMutaion.mutate(data)
+  const loginMutaion = useLoginMutation();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<ILoginData>();
   const onSubmit: SubmitHandler<ILoginData> = (data) => {
-      loginMutaion.mutate(data)
-  }
+    loginMutaion.mutate(data);
+  };
   return (
     <>
       <div className="flex h-screen bg-gray-900 flex-col justify-center px-6 py-12 lg:px-8">
@@ -55,16 +45,18 @@ export default function Signin() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <Box component={"form"} className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <Box
+            component={"form"}
+            className="space-y-6"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="flex flex-col gap-5 ">
               <div className="block w-full bg-white rounded-md  px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6">
                 <TextField
                   autoComplete="off"
                   fullWidth
                   type="email"
-                  InputLabelProps={inputLabelStyles}
-                  InputProps={inputPropsStyles}
-                  sx={sxStyles}
+                  sx={sx}
                   {...register("email")}
                   className="block  font-medium text-gray-100"
                   label="ایمیل"
@@ -76,9 +68,9 @@ export default function Signin() {
                   autoComplete="off"
                   fullWidth
                   type="password"
-                  InputLabelProps={inputLabelStyles}
-                  InputProps={inputPropsStyles}
-                  sx={sxStyles}
+                  // InputLabelProps={inputLabelStyles}
+                  // InputProps={inputPropsStyles}
+                  sx={sx}
                   {...register("password")}
                   className="block  font-medium text-gray-100"
                   label="رمز عبور"
@@ -92,7 +84,7 @@ export default function Signin() {
                 type="submit"
                 className="flex cursor-pointer w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
-                ورود
+                {loginMutaion.isPending ? "لطفا صبر کنید" : "ورود"}
               </button>
             </div>
           </Box>

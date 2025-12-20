@@ -10,6 +10,7 @@ import Ticket from "./assets/Pages/Ticket/Ticket";
 import { useEffect, useState } from "react";
 import Signin from "./Feature/Signin/Components/Signin";
 import { useSelector } from "react-redux";
+import { ProtectedRoute } from "./assets/Pages/ProtectedRoute/ProtectedRoute";
 
 
 const RouterApp = () => {
@@ -29,7 +30,12 @@ const RouterApp = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<DashboardLayout isShowLayer={isShowLayer} setIsShowLayer={setIsShowLayer} />}>
+
+        <Route path="/" element={
+            <ProtectedRoute user={user} redirectPath="/sign-in">
+               <DashboardLayout isShowLayer={isShowLayer} setIsShowLayer={setIsShowLayer} />
+            </ProtectedRoute>
+         }>
           <Route  index element={<Home user={user} />}></Route>
           <Route path="/offers" element={<Offers />}></Route>
           <Route path="/users" element={<Users />}></Route>
@@ -37,7 +43,7 @@ const RouterApp = () => {
           {/* <Route path="/tikets" element={<Ticket />}/> */}
           <Route path="/inventoryBox" element={<AdminDashboard/>}></Route>
         </Route>
-          <Route index path="/sign-in" element={<Signin/>}></Route>
+          <Route index path="/sign-in" element={<Signin/>}/>
 
 
       </Routes>

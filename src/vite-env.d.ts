@@ -10,6 +10,11 @@ interface ILoginData {
   password: string;
 }
 
+interface IUserRedux {
+  user : IUserData[]
+  isAuthentication : boolean
+}
+
 interface IUserData {
   id: number;
   firstname: string;

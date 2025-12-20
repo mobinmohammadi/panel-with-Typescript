@@ -24,7 +24,7 @@ const authSlice = createSlice({
       state.user.email = payload.email
       state.user.avatar = payload.avatar
       state.user.role = payload.role
-      state.isAuthentication = payload.
+      state.isAuthentication = payload.isAuthentication
     }
   },
 });
