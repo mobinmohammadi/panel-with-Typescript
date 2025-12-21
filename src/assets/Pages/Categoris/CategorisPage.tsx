@@ -5,7 +5,7 @@ import { useCreateCategoryMutation } from "./Hooks/useCreateCategoryMutation";
 import CategoryIcons from "@/assets/coantants/CategoryIcons";
 import { FormControl, MenuItem, Select } from "@mui/material";
 import { useState } from "react";
-import LoaderCustomConfirm from "@/utils/loaderCustomConfirm";
+import LoaderCustomConfirm from "@/utils/LoaderCustomConfirm";
 
 type FormValues = {
   category: {

@@ -10,9 +10,8 @@ import CategoryIcons from "@/assets/coantants/CategoryIcons";
 import { useDeleteMutation } from "../Hooks/useDeleteMutation";
 import DeleteSwal from "./DeleteSwal";
 import Swal from "sweetalert2";
-import { spawn } from "child_process";
-import { useEffect, useState } from "react";
-import LoaderCustomConfirm from "@/utils/loaderCustomConfirm";
+
+import LoaderCustomConfirm from "@/utils/LoaderCustomConfirm";
 
 function createData(
   name: string,
