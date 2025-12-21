@@ -1,5 +1,0 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import Chart from "./Chart";
-export default function ChartCount() {
-    return (_jsx("div", { className: '', children: _jsxs("div", { className: "flex sm:w-[408px] justify-center h-full flex-col gap-7 border-gray-300 rounded-2xl p-6 border text-neutral-600 text-xxs", children: [_jsxs("div", { className: 'flex gap-1 ', children: [_jsx("span", { children: "\u0645\u06CC\u0627\u0646\u06AF\u06CC\u0646 \u062A\u0634\u062E\u06CC\u0635 \u0648 \u0628\u0647\u0628\u0648\u062F" }), _jsx("span", { children: "(\u0645\u0627\u0647 \u062C\u0627\u0631\u06CC)" })] }), _jsx("div", { className: "flex items-center justify-center", children: _jsx(Chart, {}) }), _jsxs("div", { className: "flex items-center justify-center gap-4", children: [_jsx("span", { children: " \u06F1\u06F1\u06F0 \u0648\u06CC\u0632\u06CC\u062A \u0646\u0634\u062F\u0647" }), _jsx("span", { children: "\u06F1\u06F5\u06F0 \u0628\u0647\u0628\u0648\u062F\u06CC \u06A9\u0627\u0645\u0644" }), _jsx("span", { children: "\u06F4\u06F0 \u062F\u0631\u0645\u0627\u0646 \u0646\u0634\u062F\u0647" })] })] }) }));
-}
