@@ -4,12 +4,11 @@ import ChartCount from "@/assets/Components/ChartCount/ChartCount";
 import { Navigate } from "react-router-dom";
 
 interface IHomeProps {
-  user? : IAuthUser
+  user?: IAuthUser;
 }
 
 export default function Home({ user }: IHomeProps) {
   if (!user) {
-    
     return <Navigate to="/sign-in" replace />;
   }
 
@@ -17,7 +16,9 @@ export default function Home({ user }: IHomeProps) {
     <div>
       <DashBoard />
       <Chart />
-      <ChartCount />
+      <div className="mt-12">
+        <ChartCount />
+      </div>
     </div>
   );
 }

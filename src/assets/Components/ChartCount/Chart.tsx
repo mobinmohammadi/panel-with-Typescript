@@ -10,7 +10,7 @@ export default function Chart({ isAnimationActive = true }: { isAnimationActive?
     const total = data.reduce((sum, item) => sum + item.value, 0);
 
     return (
-        <div style={{ width: '100%', maxWidth: '176px', aspectRatio: '1 / 1' }}>
+        <div style={{ width: '100%', maxWidth: '176px',marginTop : '20px', aspectRatio: '1 / 1' }}>
             <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                     <Pie
@@ -32,9 +32,8 @@ export default function Chart({ isAnimationActive = true }: { isAnimationActive?
                         textAnchor="middle"
                         dominantBaseline="central"
                         fontSize={12}
-                        fill="#000"
                     >
-                        <tspan x="50%" dy="-0.6em" fontSize={10}>تعداد خرید های امروز</tspan>
+                        <tspan className='' x="50%" dy="-0.6em" fontSize={10}>تعداد خرید های امروز</tspan>
                         <tspan x="50%" dy="1.2em" fontSize={14} fontWeight="bold">{total}</tspan>
                     </text>
                 </PieChart>
