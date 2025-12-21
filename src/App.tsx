@@ -3,7 +3,6 @@ import { RouterApp } from './RouterApp'
 
 function App() {
     const {data , isLoading , error} = GetMeQuery()
-    console.log("Data ==> " , data);
     
   
   return (

@@ -12,6 +12,7 @@ import DeleteSwal from "./DeleteSwal";
 import Swal from "sweetalert2";
 import { spawn } from "child_process";
 import { useEffect, useState } from "react";
+import LoaderCustomConfirm from "@/utils/loaderCustomConfirm";
 
 function createData(
   name: string,
@@ -30,10 +31,9 @@ interface IDataTableCategoryProps {
 export default function DataTableCategory({
   setSelectedCategory,
 }: IDataTableCategoryProps) {
-  const { mutate, isPending } = useDeleteMutation();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { mutate, isPending: isLoaderDelete } = useDeleteMutation();
 
-  const { data } = useCategoryQuery();
+  const { data, isLoading: isFetching } = useCategoryQuery();
   const category = data?.data;
 
   const handelDelete = (categoryID: number) => {
@@ -43,38 +43,29 @@ export default function DataTableCategory({
       denyButtonText: "خیر",
     }).then((res) => {
       if (res.isConfirmed) {
-        setIsLoading(true);
-        setTimeout(() => {
-          Swal.fire("با موفقیت حذف شد", "", "success");
-          mutate(categoryID);
-          setIsLoading(false);
-        }, 1500);
+        mutate(categoryID, {
+          onSuccess: () => {
+            Swal.fire("با موفقیت حذف شد", "", "success");
+          },
+          onError: () => {
+            Swal.fire("حذف ناموفق بود", "", "error");
+          },
+        });
       } else if (res.isDenied) {
         Swal.fire("لغو شد", "", "error");
       }
     });
   };
 
-  useEffect(() => {
-    setIsLoading(true)
-    setTimeout(() => {
-        setIsLoading(false)
-    }, 1500);
-  } , [category])
-
-  console.log("allCategory ===> ", category);
   return (
     <>
-      {isLoading ? (
-        <div className="flex gap-1 items-center justify-center w-full h-92  text-white dark:bg-[#2b3547d1] bg-white">
-          <span className="font-Dana-Demi-bold dark:text-white text-gray-900">
-            در حال حذف دسته بندی.....
-          </span>
-          <span className="loader"></span>
-        </div>
+      {isFetching ? (
+        <LoaderCustomConfirm title="در حال لود دسته بندی...." />
+      ) : isLoaderDelete ? (
+        <LoaderCustomConfirm title="در حال حذف دسته بندی...." />
       ) : category?.length ? (
         <>
-          <div className="font-Dana-Demi-bold pb-5 flex gap-0.5 text-xs left-5 text-white top-5">
+          <div className="font-Dana-Demi-bold pb-5 flex gap-0.5 text-xs left-5 text-gray-900 dark:text-white top-5">
             <span>تعداد دسته بندی ها : </span>
             <span>{category?.length} </span>
           </div>
@@ -93,10 +84,10 @@ export default function DataTableCategory({
                   </TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody className="dark:bg-[#212D45]  bg-white text-gray-900">
+              <TableBody className="dark:bg-[#212D45]  bg-white w-full text-gray-900">
                 {category?.map((row: ICategoryRespone) => (
                   <TableRow
-                    key={row.name}
+                    key={row.id}
                     className="**:flex **:flex-col **:text-gray-900 dark:**:text-white"
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >

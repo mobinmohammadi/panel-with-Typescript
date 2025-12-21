@@ -1,15 +1,18 @@
 import { axiosClient } from "../AxiosClient";
 
 export const CategoryApi = {
-  getCategory() {
+  async getCategory() {
+    await new Promise((res) => setTimeout(res, 1500));
     const url = "categories";
     return axiosClient.get(url);
   },
-  createCategory(data: any) {
+  async createCategory(data: any) {
+    await new Promise((res) => setTimeout(res, 1500));
     const url = "categories";
     return axiosClient.post(url, data);
   },
-  deleteCategory(id: any) {
+  async deleteCategory(id: any) {
+    await new Promise((res) => setTimeout(res, 1500));
     const url = `categories/${id}`;
     return axiosClient.delete(url);
   },

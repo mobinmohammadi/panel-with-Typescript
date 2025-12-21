@@ -29,12 +29,10 @@ const RouterApp = () => {
   const [isShowLayer , setIsShowLayer] = useState<boolean>(false)
 
   useEffect(() => {
-    console.log(isShowLayer);
     
   },[isShowLayer])
   const user = useSelector((state : any) => state.user)
   useEffect(() => {
-    console.log(user)
   }, [user])
   
 
