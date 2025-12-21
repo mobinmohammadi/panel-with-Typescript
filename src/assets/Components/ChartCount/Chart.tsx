@@ -32,6 +32,7 @@ export default function Chart({ isAnimationActive = true }: { isAnimationActive?
                         textAnchor="middle"
                         dominantBaseline="central"
                         fontSize={12}
+                        fill='#659DF5'
                     >
                         <tspan className='' x="50%" dy="-0.6em" fontSize={10}>تعداد خرید های امروز</tspan>
                         <tspan x="50%" dy="1.2em" fontSize={14} fontWeight="bold">{total}</tspan>
