@@ -2,8 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./assets/Pages/Home/Home";
 import Users from "./assets/Pages/Users/Users";
 import DashboardLayout from "./assets/layouts/DashboardLayout/DashboardLayout";
-import InventoryBox from "./assets/Pages/InventoryBox/InventoryBox";
-import AdminDashboard from "./assets/Pages/InventoryBox/AdminDashboard";
+
 import Offers from "./assets/Pages/Offers/Offers";
 import Gozareshat from "./assets/Pages/Gozareshat/Gozareshat";
 import Ticket from "./assets/Pages/Ticket/Ticket";

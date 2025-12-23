@@ -24,7 +24,7 @@ export default function CustomFileInput({ accept = "image/*" }) {
       >
         برای افرودن کلیک کنید
       </button>
-      {imageFile && <span>فایل انتخاب شده: {imageFile}</span>}
+      {imageFile && <span>فایل انتخاب شده: </span>}
       <input
         type="file"
         ref={fileInputRef}

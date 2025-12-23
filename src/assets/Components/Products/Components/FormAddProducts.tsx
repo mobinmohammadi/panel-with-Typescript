@@ -32,7 +32,7 @@ const FormAddProduct = () => {
         <Box
           component={"form"}
           className="flex flex-col gap-5"
-          onSubmit={handleSubmit(onSubmit)}
+        //   onSubmit={handleSubmit(onSubmit)}
         >
           <span className="dark:text-white text-gray-800">ثبت محصول جدید</span>
           <div className="grid grid-cols-1 3xs:grid-cols-2  **:w-full gap-5  **:outline-0 text-xxs *:flex *:flex-col *:gap-4  **:rounded ">
