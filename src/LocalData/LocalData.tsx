@@ -5,7 +5,7 @@ const liMenu = [
    { id : 4 , title : "گزارشات" , link : "/gozareshat"},
    { id : 5 , title : "کد های تخفیف" , link : "/offers"},
    { id : 6 , title : "تیکت ها" , link : "/tikets"},
-   { id : 7 , title : "محصولات ما" , link : "InventoryBox"},
+   { id : 7 , title : "محصولات ما" , link : "products"},
     
 ]
 

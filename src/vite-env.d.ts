@@ -37,3 +37,13 @@ interface IDashboardRespone {
   totalRevenue: number;
   totalRevenueByProducts: number;
 }
+
+ interface IProductsFormInputs {
+  name: string;
+  longDescription: string;
+  shortDescription: string;
+  quantity: string;
+  categoryId: number;
+  price: string;
+  main_image : string
+}

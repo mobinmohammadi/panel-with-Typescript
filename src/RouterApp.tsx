@@ -15,6 +15,8 @@ import { GetMeQuery } from "./Hooks/GetMeQuery";
 import { log } from "console";
 import useAuthenticate from "./Hooks/useAuthenticate";
 import { CategorisPage } from "./assets/Pages/Categoris/CategorisPage";
+import PageNotFound from "./assets/Pages/PageNotFound/PageNotFound";
+import ProductPage from "./assets/Pages/Products/ProductPage";
 
 const AuthWrapper = () => {
   useAuthenticate();
@@ -50,11 +52,11 @@ const RouterApp = () => {
           <Route path="/offers" element={<Offers />}></Route>
           <Route path="/users" element={<Users />}></Route>
           <Route path="/gozareshat" element={<Gozareshat />} />
-          {/* <Route path="/tikets" element={<Ticket />}/> */}
-          <Route path="/inventoryBox" element={<AdminDashboard />} />
+          <Route path="/products" element={<ProductPage />} />
           <Route path="/categoris" element={<CategorisPage />} />
         </Route>
         <Route index path="/sign-in" element={<Signin />} />
+        <Route index path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );

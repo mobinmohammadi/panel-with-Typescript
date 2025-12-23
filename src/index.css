@@ -13,12 +13,15 @@
   --color-dark-menu: #9bb9d6;
   --color-icon-dark: #47f893;
   --font-Dana-Demi-bold: "DanaDemiBold";
+  --color-secondary-dark: #212D45;
   --text-x: 10px;
   --breakpoint-xs: 400px;
   --breakpoint-2xs: 480px;
+  --breakpoint-xxxs: 480px;
   --breakpoint-3xs: 780px;
   --breakpoint-4xs: 640px;
   --breakpoint-zl: 568px;
+
 
   --breakpoint-ls: 267px;
 }
@@ -147,4 +150,33 @@ td {
         100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
     }
 
-    
+.inputfile-box {
+  position: relative;
+}
+
+.inputfile {
+  display: none;
+}
+
+.container {
+  display: inline-block;
+  width: 100%;
+}
+
+.file-box {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid;
+  padding: 5px 0px 5px 5px;
+  box-sizing: border-box;
+  height: calc(2rem - 2px);
+}
+
+.file-button {
+  background: red;
+  padding: 5px;
+  position: absolute;
+  border: 1px solid;
+  top: 0px;
+  right: 0px;
+}
