@@ -44,7 +44,7 @@ const FormAddProduct = () => {
     formData.append("price", data.price.toString());
     formData.append("main_image", data.main_image as File);
 
-    createProduct.mutate(formData);
+    // createProduct.mutate(formData);
   };
 
   return (
@@ -100,8 +100,7 @@ const FormAddProduct = () => {
                 انتخاب دسته بندی
               </label>
               <select
-                onChange={(e : React.ChangeEvent<HTMLSelectElement>) => setValue("categoryId", Number(e.target.value))}
-                className="dark:bg-white pt-2 pb-2 pr-1 bg-slate-200"
+className="dark:bg-white pt-2 pb-2 pr-1 bg-slate-200"
                 {...register("categoryId", { valueAsNumber: true })}
                 name=""
                 id=""
