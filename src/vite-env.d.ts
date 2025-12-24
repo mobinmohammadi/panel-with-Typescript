@@ -42,8 +42,8 @@ interface IDashboardRespone {
   name: string;
   longDescription: string;
   shortDescription: string;
-  quantity: string;
+  quantity: number;
   categoryId: number;
-  price: string;
-  main_image : string
+  price: number;
+  main_image: File
 }

@@ -4,6 +4,8 @@ import { useMutation } from "@tanstack/react-query";
 export function useCreateProductMutation() {
   return useMutation({
     mutationFn: (data: IProductsFormInputs) => {
+      console.log(data);
+      
       return ProductsApi.createProduct(data);
     },
     onSuccess: (data) => {
