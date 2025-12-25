@@ -16,6 +16,7 @@ import useAuthenticate from "./Hooks/useAuthenticate";
 import { CategorisPage } from "./assets/Pages/Categoris/CategorisPage";
 import PageNotFound from "./assets/Pages/PageNotFound/PageNotFound";
 import ProductPage from "./assets/Pages/Products/ProductPage";
+import SingleProductPage from "./assets/Pages/Products/SingleProductPage/SingleProductPage";
 
 const AuthWrapper = () => {
   useAuthenticate();
@@ -52,6 +53,7 @@ const RouterApp = () => {
           <Route path="/users" element={<Users />}></Route>
           <Route path="/gozareshat" element={<Gozareshat />} />
           <Route path="/products" element={<ProductPage />} />
+          <Route path="/products/:ProductID" element={<SingleProductPage/>}/>
           <Route path="/categoris" element={<CategorisPage />} />
         </Route>
         <Route index path="/sign-in" element={<Signin />} />

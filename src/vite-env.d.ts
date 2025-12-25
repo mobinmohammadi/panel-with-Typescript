@@ -38,12 +38,39 @@ interface IDashboardRespone {
   totalRevenueByProducts: number;
 }
 
- interface IProductsFormInputs {
+interface IProductsFormInputs {
   name: string;
   longDescription: string;
   shortDescription: string;
   quantity: number;
   categoryId: number;
   price: number;
-  main_image: File
+  main_image: File;
+}
+
+interface IProduct {
+  categoryId: number;
+  createdAt: string;
+  id: number;
+  longDescription: string;
+  main_image: string;
+  name: string;
+  price: number;
+  quantity: number;
+  shopId: number;
+  shortDescription: string;
+  status: boolean;
+  updatedAt: string;
+  productImages: ProductImgChild[];
+}
+
+interface ProductImgChild {
+  id: number;
+  image: string;
+  productId: number;
+}
+
+interface IApiResponse<T> {
+  data: T;
+  message: string;
 }

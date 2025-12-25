@@ -3,11 +3,21 @@ import { Box } from "@mui/material";
 import { useCreateProductMutation } from "../Hooks/useCreateProductMutation";
 import { useCategoryQuery } from "@/assets/Pages/Categoris/Hooks/useCategoryQuery";
 import CustomFileInput from "./CustomFileInput";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SechmaFormProduct } from "../Schema/SechmaFormProduct";
+import { useUpdateProductMutation } from "../Hooks/useUpdateProductMutation";
+import LoaderCustomConfirm from "@/utils/LoaderCustomConfirm";
 
-const FormAddProduct = () => {
+interface IFormAddProductProps {
+  seletcedProduct: IProduct | null;
+  setSelectedProduct: (product: IProduct | null) => void;
+}
+
+const FormAddProduct = ({
+  seletcedProduct,
+  setSelectedProduct,
+}: IFormAddProductProps) => {
   const { data } = useCategoryQuery();
   const category = data?.data;
   const {
@@ -21,20 +31,31 @@ const FormAddProduct = () => {
       name: "",
       longDescription: "",
       shortDescription: "",
-      quantity: 0,
-      categoryId: 0,
-      price: 0,
+      quantity: undefined,
+      categoryId: undefined,
+      price: undefined,
       main_image: undefined,
     },
-    // resolver: yupResolver(SechmaFormProduct),/
+    // resolver: yupResolver(SechmaFormProduct),
   });
+  const { mutate , isPending } = useUpdateProductMutation({reset});
 
-  const createProduct = useCreateProductMutation();
+  useEffect(() => {
+    if (seletcedProduct) {
+      setValue("name", seletcedProduct.name);
+      setValue("price", seletcedProduct.price);
+      setValue("categoryId", seletcedProduct.categoryId);
+      // setValue("main_image", seletcedProduct.main_image );
+      setValue("price", seletcedProduct.price);
+      setValue("quantity", seletcedProduct.quantity);
+      setValue("shortDescription", seletcedProduct.shortDescription);
+      setValue("longDescription", seletcedProduct.longDescription);
+    }
+  }, [seletcedProduct, setValue]);
+
+  const createProduct = useCreateProductMutation(reset);
 
   const onSubmit: SubmitHandler<IProductsFormInputs> = (data) => {
-    console.log(data);
-    console.log("ljdfnbdf");
-
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("longDescription", data.longDescription);
@@ -43,13 +64,26 @@ const FormAddProduct = () => {
     formData.append("categoryId", data.categoryId.toString());
     formData.append("price", data.price.toString());
     formData.append("main_image", data.main_image as File);
+    if (seletcedProduct) {
+      mutate({ id: seletcedProduct.id, data: formData });
 
-    // createProduct.mutate(formData);
+      console.log(seletcedProduct);
+    } else {
+      createProduct.mutate(formData);
+    }
+  };
+
+  const changeCategoryId = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log(e.target.value);
+    setValue("categoryId", parseInt(e.target.value));
   };
 
   return (
     <div className="dark:bg-secondary-dark bg-white  w-full rounded-sm font-Dana-Demi-bold p-5 space-y-2">
       <div className="">
+        {isPending ? (
+          <LoaderCustomConfirm title="درحال آپدیت...."/>
+        ) : (
         <Box
           component={"form"}
           className="flex flex-col gap-5"
@@ -83,7 +117,7 @@ const FormAddProduct = () => {
 
               <input
                 {...register("shortDescription")}
-                className="dark:bg-white pt-2 pb-2 pr-1 bg-slate-300"
+                className="dark:bg-white pl-1 pt-2 pb-2 pr-1 bg-slate-300"
                 placeholder="توضیح کوتاه...."
               />
               {errors.shortDescription && (
@@ -100,8 +134,8 @@ const FormAddProduct = () => {
                 انتخاب دسته بندی
               </label>
               <select
-className="dark:bg-white pt-2 pb-2 pr-1 bg-slate-200"
-                {...register("categoryId", { valueAsNumber: true })}
+                className="dark:bg-white pt-2 pb-2 pr-1 bg-slate-200"
+                onChange={(e) => changeCategoryId(e)}
                 name=""
                 id=""
               >
@@ -184,6 +218,8 @@ className="dark:bg-white pt-2 pb-2 pr-1 bg-slate-200"
             </button>
           </div>
         </Box>
+
+        )}
       </div>
     </div>
   );

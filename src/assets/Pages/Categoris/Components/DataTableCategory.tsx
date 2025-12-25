@@ -8,7 +8,7 @@ import Paper from "@mui/material/Paper";
 import { useCategoryQuery } from "../Hooks/useCategoryQuery";
 import CategoryIcons from "@/assets/coantants/CategoryIcons";
 import { useDeleteMutation } from "../Hooks/useDeleteMutation";
-import DeleteSwal from "./DeleteSwal";
+import DeleteSwal from "../../../../utils/DeleteSwal";
 import Swal from "sweetalert2";
 
 import LoaderCustomConfirm from "@/utils/LoaderCustomConfirm";

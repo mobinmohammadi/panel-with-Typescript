@@ -25,7 +25,9 @@
 
   --breakpoint-ls: 267px;
 }
-
+body{
+  font-family: Dana;
+}
 .btn {
   width: 20px;
   outline: none;
@@ -44,6 +46,13 @@
   color: red;
   min-width: 180px;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.short-text {
+  width: 120px;          
+  white-space: nowrap;   
+  overflow: hidden;     
+  text-overflow: ellipsis!important;
 }
 
 .dropdown-content [data-highlighted] {
@@ -180,3 +189,4 @@ td {
   top: 0px;
   right: 0px;
 }
+
