@@ -19,8 +19,8 @@ export default function useLoginMutation() {
       dispatch(
         setUser({
           id: userInfos.id,
-          firstname: userInfos.firstname,
-          lastname: userInfos.lastname,
+          firstname: userInfos.firstName,
+          lastname: userInfos.lastName,
           role: userInfos.role,
           avatar: userInfos.avatar,
           email: userInfos.email,

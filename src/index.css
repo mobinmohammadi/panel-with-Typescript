@@ -14,6 +14,7 @@
   --color-icon-dark: #47f893;
   --font-Dana-Demi-bold: "DanaDemiBold";
   --color-secondary-dark: #212D45;
+  --color-boxDark : #90A1B9;
   --text-x: 10px;
   --breakpoint-xs: 400px;
   --breakpoint-2xs: 480px;
@@ -24,6 +25,10 @@
 
 
   --breakpoint-ls: 267px;
+}
+
+.transition-custom{
+  transition: all 1s all;
 }
 body{
   font-family: Dana;

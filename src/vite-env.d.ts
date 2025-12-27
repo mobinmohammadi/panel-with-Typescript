@@ -24,8 +24,8 @@ interface ICategoryRespone {
 
 interface IUserData {
   id: number;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   role: string;
   email: string;
   avatar: string;

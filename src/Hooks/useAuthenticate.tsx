@@ -19,8 +19,8 @@ export default function useAuthenticate() {
       dispatch(
         setUser({
           id: data.id,
-          firstname: data.firstname,
-          lastname: data.lastname,
+          firstname: data.firstName,
+          lastname: data.lastName,
           avatar: data.avatar,
           role: data.role,
           email: data.email,

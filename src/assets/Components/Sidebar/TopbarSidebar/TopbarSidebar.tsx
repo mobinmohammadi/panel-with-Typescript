@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   setIsShowMenuPanel: (value: boolean) => void;
@@ -22,6 +23,9 @@ export default function TopbarSidebar({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+
+  const navigate = useNavigate()
 
   return (
     <div className="pt-5 pr-3 w-full">
@@ -49,7 +53,7 @@ export default function TopbarSidebar({
           </div>
         </div>
 
-        <div className="flex items-center  gap-2 relative z-50" ref={menuRef}>
+        <div className="flex items-center  gap-2 relative z-30" ref={menuRef}>
           <div
             className="border-2 relative border-yellow-400 z-20 border-solid rounded-full cursor-pointer"
             onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -80,7 +84,7 @@ export default function TopbarSidebar({
               <button className=" text-right hover:bg-gray-200 ">
                 اعلانات
               </button>
-              <button className=" text-right hover:bg-gray-200">
+              <button onClick={() => navigate("/myprofail")} className=" text-right hover:bg-gray-200">
                 مشاهده پروفایل
               </button>
               <button className=" text-right transition-all hover:text-white hover:bg-red-600 text-red-500">
