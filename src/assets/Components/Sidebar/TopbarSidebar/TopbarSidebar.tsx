@@ -1,4 +1,7 @@
+import { useAppSelector } from "@/redux/hooks";
+import { RootState } from "@/redux/Store";
 import React, { useState, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
@@ -11,9 +14,11 @@ export default function TopbarSidebar({
   setIsShowLayer,
 }: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const userDetails = useAppSelector((state) => state.user.user);
+
+
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // بستن منو وقتی کاربر خارج کلیک می‌کند
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -24,8 +29,7 @@ export default function TopbarSidebar({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="pt-5 pr-3 w-full">
@@ -45,7 +49,9 @@ export default function TopbarSidebar({
         <div className="flex flex-col gap-1">
           <span className="text-xs sm:text-sm">داشبورد فروشگاه</span>
           <div className="text-xs flex gap-1 tracking-wide">
-            <span className="text-x sm:text-sm">مبین محمدی عزیز</span>
+            <span className="text-x sm:text-sm">
+              {userDetails.lastname} عزیز
+            </span>
             <span className="dark:text-primary-dark text-x sm:text-sm">
               خوش آمدید{" "}
             </span>
@@ -60,8 +66,8 @@ export default function TopbarSidebar({
           >
             <img
               className="w-10 h-10 sm:w-14 sm:h-14 object-cover rounded-full"
-              src="./../Admin/Admin.jpg"
-              alt="Admin"
+              src={userDetails.avatar ? `${import.meta.env.VITE_BACKEND_URL}/images/users/${userDetails.avatar}` : "https://secure.gravatar.com/avatar/7cc3744776786e69ba44033e063546ca?s=96&d=mm&r=g"}
+              alt="عکس"
             />
             <span className="absolute bg-sky-500 top-0 right-1 h-2 w-2 rounded-full border border-white"></span>
           </div>
@@ -70,10 +76,10 @@ export default function TopbarSidebar({
             className="flex flex-col gap-1 cursor-pointer z-20"
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
-            <span className="text-x sm:text-xs">مبین محمدی</span>
+            <span className="text-x sm:text-xs">{userDetails.lastname} {userDetails.firstname}</span>
             <div className="flex gap-1 items-center">
-              <span className="text-x">توسعه دهنده فرانت</span>
-              <svg className="w-4 h-4 sm:w-5 sm:h-5">
+              <span className="text-x">{userDetails.role == "ADMIN" ? "ادمین سایت" : "کاربر"}</span>
+              <svg className="w-3 h-3 sm:w-4 sm:h-4">
                 <use href="#chevron-down"></use>
               </svg>
             </div>
@@ -84,7 +90,10 @@ export default function TopbarSidebar({
               <button className=" text-right hover:bg-gray-200 ">
                 اعلانات
               </button>
-              <button onClick={() => navigate("/myprofail")} className=" text-right hover:bg-gray-200">
+              <button
+                onClick={() => navigate("/myprofail")}
+                className=" text-right hover:bg-gray-200"
+              >
                 مشاهده پروفایل
               </button>
               <button className=" text-right transition-all hover:text-white hover:bg-red-600 text-red-500">
@@ -93,8 +102,10 @@ export default function TopbarSidebar({
             </div>
           )}
           {isMenuOpen && (
-
-          <div onClick={() => setIsMenuOpen(false)} className="z-10 fixed w-full h-full top-0 right-0 backdrop-blur-sm"></div>
+            <div
+              onClick={() => setIsMenuOpen(false)}
+              className="z-10 fixed w-full h-full top-0 right-0 backdrop-blur-sm"
+            ></div>
           )}
         </div>
       </div>

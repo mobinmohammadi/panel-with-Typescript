@@ -4,32 +4,28 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useUpdateProfail } from "../Hooks/useUpdateProfail";
 
-type IDetailsFormUser = {
-  firstname: string;
-  lastname: string;
-};
 export default function RightContent() {
   const [isEditeModale, setIsEditeModale] = useState(true);
   const { user } = useSelector((state: any) => state.user);
 
-      
-  console.log(user);
-  
+
   const {
     register,
     handleSubmit,
-    watch,
 
     formState: { errors },
-  } = useForm<IDetailsFormUser>({
-    defaultValues : {
-      firstname : user.lastname,
-      lastname : user.firstname
-    }
+  } = useForm<IUpdateProfail>({
+    defaultValues: {
+      firstName: user.firstname,
+      lastName: user.lastname,
+    },
   });
-  const onSubmit: SubmitHandler<IDetailsFormUser> = (data) => {
-    console.log(data);
+  const { mutate } = useUpdateProfail();
+  const onSubmit: SubmitHandler<IUpdateProfail> = (data) => {
+    
+    mutate({ id: user.id, data });
   };
 
   return (
@@ -42,7 +38,13 @@ export default function RightContent() {
         <div className="w-22 group  relative  cursor-pointer transition-all overflow-hidden rounded-full">
           <img
             className="w-22  h-22 rounded-full"
-            src="./Admin/Admin.jpg"
+            src={
+              user.avatar
+                ? `${import.meta.env.VITE_BACKEND_URL}/images/users/${
+                    user.avatar
+                  }`
+                : "https://secure.gravatar.com/avatar/7cc3744776786e69ba44033e063546ca?s=96&d=mm&r=g"
+            }
             alt=""
           />
           <div className="bg-white/30 z-10 w-full transition-all group-hover:bottom-0 bottom-full  flex items-center justify-center absolute">
@@ -56,8 +58,10 @@ export default function RightContent() {
         </div>
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-4 ">
-            <span className="text-gray-900 text-sm">مبین محمدی</span>
-            <span className="text-gray-700 text-xs">09036945119</span>
+            <span className="text-gray-900 text-sm">
+              {user.lastname} {user.firstname}
+            </span>
+            <span className="text-gray-700 text-xs">{user.email}</span>
           </div>
           <div
             onClick={() => setIsEditeModale(true)}
@@ -84,7 +88,7 @@ export default function RightContent() {
                 <span className="text-sm  text-white  ">تغییر اطلاعات</span>
               </div>
               <form
-              onSubmit={handleSubmit(onSubmit)}
+                onSubmit={handleSubmit(onSubmit)}
                 action="#"
                 className="*:text-white  flex justify-between h-full flex-col gap-4 "
               >
@@ -94,7 +98,7 @@ export default function RightContent() {
                       نام
                     </label>
                     <input
-                      {...register("firstname")}
+                      {...register("firstName")}
                       className="bg-gray-800 outline-0 text-sm p-2 rounded-xs"
                       type="text"
                       placeholder="محسن"
@@ -110,7 +114,7 @@ export default function RightContent() {
                       className="bg-gray-800 outline-0 text-sm p-2 rounded-xs"
                       placeholder="حریری"
                       id=""
-                      {...register("lastname")}
+                      {...register("lastName")}
                     />
                   </div>
                 </div>

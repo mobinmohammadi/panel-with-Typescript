@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { userLogin } from "./Auth/AuthAction";
 import Cookies from "js-cookie";
 
 const savedUser = Cookies.get("user");

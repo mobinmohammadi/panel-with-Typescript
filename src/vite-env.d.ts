@@ -11,7 +11,7 @@ interface ILoginData {
 }
 
 interface IUserRedux {
-  user: IUserData[];
+  user: IUserData | null;
   isAuthentication: boolean;
 }
 
@@ -73,4 +73,10 @@ interface ProductImgChild {
 interface IApiResponse<T> {
   data: T;
   message: string;
+}
+
+
+interface IUpdateProfail {
+  firstName: string;
+  lastName: string;
 }
