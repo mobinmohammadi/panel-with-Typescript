@@ -5,3 +5,7 @@
 .ss{
     color: red!important;
 }
+
+.Toastify__toast {
+  font-family: 'DanaDemiBold'!important;
+}

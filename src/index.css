@@ -195,3 +195,14 @@ td {
   right: 0px;
 }
 
+
+
+
+.custom-file-upload {
+  border: 5px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 10px;
+
+}

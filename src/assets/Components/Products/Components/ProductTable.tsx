@@ -51,9 +51,14 @@ export default function ProductTable({
       }
     });
   };
-  const data = useProductsQuery();
+  const {data  , isLoading , isError} = useProductsQuery();
   const product = data?.data;
-  console.log(product);
+
+  console.log("product" , product);
+
+
+  if(isLoading) return <LoaderCustomConfirm title="در حال دریافت لیست محصولات..."/>
+  if(isError) return <LoaderCustomConfirm title="خطا در دریافت اطلاعات محصولات ☹"/>
 
   return (
     <div className="flex flex-col gap-5">

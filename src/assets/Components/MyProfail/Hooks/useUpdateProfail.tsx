@@ -10,7 +10,7 @@ interface IUseUpdateProfail {
   data: IUpdateProfail;
 }
 
-export const useUpdateProfail = () => {
+export const useUpdateProfail = (setIsEditeModale: (props : boolean) => void) => {
   const dispatch = useAppDispatch();
   const queyClient = useQueryClient();
 
@@ -19,22 +19,26 @@ export const useUpdateProfail = () => {
       DetailsMe.updateMe(id, data),
     onSuccess: async (data) => {
       console.log("data ==> ", data);
+      const userInfos = await AuthApi.getMe();
+      console.log(userInfos);
+      setIsEditeModale(false)
       toast.success("موفق");
       dispatch(
         setUser({
-          id: data.data.id,
+          id: userInfos.id,
           firstname: data.data.firstName,
-          lastName: data.data.lastName,
-          email: data.data.email,
-          avatar: data.data.avatar,
-          role: data.data.role,
+          lastname: data.data.lastName,
+          email: userInfos.email,
+          avatar: userInfos.avatar,
+          role: userInfos.role,
+          isAuthentication: true,
         })
       );
 
       queyClient.invalidateQueries({ queryKey: ["getme"] });
     },
     onError(erorr) {
-      console.log(erorr);
+      toast.error("خطا در تغییر اطلاعات کابری....")
     },
   });
 };

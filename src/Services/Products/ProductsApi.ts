@@ -5,7 +5,8 @@ export const ProductsApi = {
     const url = "products";
     return axiosClient.post(url, data);
   },
-  getProducts() {
+  async getProducts() {
+    await new Promise((res) => setTimeout(res ,1000))
     const url = "products";
     return axiosClient.get(url);
   },

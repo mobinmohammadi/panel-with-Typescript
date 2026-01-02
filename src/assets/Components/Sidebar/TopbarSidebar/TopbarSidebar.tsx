@@ -76,7 +76,7 @@ export default function TopbarSidebar({
             className="flex flex-col gap-1 cursor-pointer z-20"
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
-            <span className="text-x sm:text-xs">{userDetails.lastname} {userDetails.firstname}</span>
+            <span className="text-x sm:text-xs">{userDetails.firstname} {userDetails.lastname}</span>
             <div className="flex gap-1 items-center">
               <span className="text-x">{userDetails.role == "ADMIN" ? "ادمین سایت" : "کاربر"}</span>
               <svg className="w-3 h-3 sm:w-4 sm:h-4">
