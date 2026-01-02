@@ -10,7 +10,7 @@ import { useChangeAvatarProfile } from "../Hooks/useChangeAvatarProfile";
 export default function RightContent() {
   const [isEditeModale, setIsEditeModale] = useState(false);
   const { user } = useSelector((state: any) => state.user);
-  const [prevImage, setPrevImage] = useState();
+  const [prevImage, setPrevImage] = useState<string>();
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
   const changeProfileMutate = useChangeAvatarProfile();
 
