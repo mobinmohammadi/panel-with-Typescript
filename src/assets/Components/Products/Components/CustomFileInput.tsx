@@ -41,10 +41,10 @@ export default function CustomFileInput({ setValue }: any) {
           <button
             type="button"
             onClick={handelImageUploadClick}
-            className="text-gray-800 cursor-pointer w-12 h-34 text-[12px]  pb-2 hover:text-red-700 transition-all"
+            className="text-gray-800 cursor-pointer w-48 h-34 text-[12px]  pb-2 hover:text-red-700 transition-all"
           >
             {!imageFile ? (
-              <span> برای افرودن کلیک کنید</span>
+              <span className=" inline-block"> برای افرودن کلیک کنید</span>
             ) : (
               <span>فایل انتخاب شده: {imageFile.length} </span>
             )}

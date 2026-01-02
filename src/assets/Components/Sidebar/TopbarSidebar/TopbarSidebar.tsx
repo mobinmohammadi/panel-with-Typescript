@@ -15,8 +15,12 @@ export default function TopbarSidebar({
 }: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const userDetails = useAppSelector((state) => state.user.user);
+  const navigate = useNavigate();
 
 
+  useEffect(() => {
+    setIsMenuOpen(false)
+  },[navigate])
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -29,7 +33,6 @@ export default function TopbarSidebar({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const navigate = useNavigate();
 
   return (
     <div className="pt-5 pr-3 w-full">
@@ -59,7 +62,7 @@ export default function TopbarSidebar({
           </div>
         </div>
 
-        <div className="flex items-center  gap-2 relative z-30" ref={menuRef}>
+        <div className="flex items-center  gap-2 relative z-10" ref={menuRef}>
           <div
             className="border-2 relative border-yellow-400 z-20 border-solid rounded-full cursor-pointer"
             onClick={() => setIsMenuOpen((prev) => !prev)}

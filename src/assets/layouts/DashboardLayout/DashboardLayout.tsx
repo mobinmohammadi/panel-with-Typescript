@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import TopbarSidebar from "@/assets/Components/Sidebar/TopbarSidebar/TopbarSidebar";
 
 type Props = {
@@ -10,7 +10,12 @@ type Props = {
 
 function DashboardLayout({ isShowLayer, setIsShowLayer }: Props) {
   const [isShowMenuPanel, setIsShowMenuPanel] = useState<boolean>(false);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    setIsShowMenuPanel(false);
+    setIsShowLayer(false)
+  }, [navigate]);
   const wrapperMenuPanel = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

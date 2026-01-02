@@ -90,7 +90,7 @@ const FormAddProduct = ({
           onSubmit={handleSubmit(onSubmit)}
         >
           <span className="dark:text-white text-gray-800">ثبت محصول جدید</span>
-          <div className="grid grid-cols-1 3xs:grid-cols-2  **:w-full gap-5  **:outline-0 text-xxs *:flex *:flex-col *:gap-4  **:rounded ">
+          <div className="flex flex-col md:flex-none md:grid grid-cols-2 w-full  gap-5 **:rounded-sm  **:outline-0 text-xxs *:flex *:flex-col *:gap-4 ">
             <div className="">
               <label
                 htmlFor="name"

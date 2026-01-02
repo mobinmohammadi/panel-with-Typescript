@@ -27,7 +27,6 @@ export default function ProductTable({
 }: IProductTableProps) {
   const navigate = useNavigate();
   const { mutate, isPending } = useDeleteProductMutation();
-  console.log(seletcedProduct);
 
   const handelDelete = (product: IProduct) => {
     console.log(product.id);
@@ -54,7 +53,6 @@ export default function ProductTable({
   const {data  , isLoading , isError} = useProductsQuery();
   const product = data?.data;
 
-  console.log("product" , product);
 
 
   if(isLoading) return <LoaderCustomConfirm title="در حال دریافت لیست محصولات..."/>

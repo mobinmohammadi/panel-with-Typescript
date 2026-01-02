@@ -4,12 +4,15 @@ import ThemeContext from "../../Context/Context";
 import { liMenu } from "../../../LocalData/LocalData";
 import LiSidebar from "../LiSidebar/LiSidebar";
 import TopbarSidebar from "./TopbarSidebar/TopbarSidebar";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   setIsShowMenuPanel : (value : boolean) => void;
 };
 function Sidebar({setIsShowMenuPanel} : Props) {
   // const { state, dispatch } = useContext(ThemeContext);
+
+ 
 
   const [theme, setTheme] = useState<"light" | "dark">("dark");
 
@@ -32,7 +35,7 @@ function Sidebar({setIsShowMenuPanel} : Props) {
 
   return (
     <>
-      <div className="dark:bg-[#151b27] z-20 flex border-l-2 border-solid  dark:border-sky-200 rounded-l-xl flex-col gap-5 3xs:gap-10  bg-slate-200 w-[250px] xl:w-[300px] pr-4 pl-4 pt-4">
+      <div className="dark:bg-[#151b27] z-40 flex border-l-2 border-solid  dark:border-sky-200 rounded-l-xl flex-col gap-5 3xs:gap-10  bg-slate-200 w-[250px] xl:w-[300px] pr-4 pl-4 pt-4">
         <div className="flex gap-1 relative items-center justify-between border-b-1 dark:pb-5 dark:rounded-2xl border-b-slate-400 pb-4 border-solid">
           <div className="flex w-full  items-center gap-1 justify-center ">
             <div className="flex items-center gap-1">
