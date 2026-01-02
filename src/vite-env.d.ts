@@ -75,8 +75,13 @@ interface IApiResponse<T> {
   message: string;
 }
 
-
 interface IUpdateProfail {
   firstName: string;
   lastName: string;
+}
+
+interface ICoupans {
+  code: string;
+  discountPrice: numnber;
+  discountType: string;
 }
