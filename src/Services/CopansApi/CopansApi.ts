@@ -5,8 +5,14 @@ export const CopansApi = {
         const url = "coupons"
         return axiosClient.get(url)
     },
-      createCoupans(data : ICoupans) {
+    
+    async createCoupans(data : ICoupans) {
+        await new Promise(res => setTimeout(res , 1500))
         const url = "coupons"
         return axiosClient.post(url , data)
+    },
+     deleteCoupans(name: string) {
+        const url = `coupons/${name}`
+        return axiosClient.delete(url)
     }
 }

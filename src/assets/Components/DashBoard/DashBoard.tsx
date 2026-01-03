@@ -14,14 +14,12 @@ export default function DashBoard() {
     const fetchData = async () => {
       try {
         const result = await DashboardApi.getInfo();
-        console.log(result.data);
         setDataDashboard(result.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-    console.log(dataDashboard);
   }, []);
 
   return (
